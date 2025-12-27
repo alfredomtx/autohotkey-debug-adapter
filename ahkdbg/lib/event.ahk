@@ -41,8 +41,13 @@ CreateBreakpoint(verified, id := "", line := "", column := "", source := "", mes
 		breakpoint["column"] := column+0
 	if source
 	{
-		SplitPath, source, name
-		breakpoint["source"] := {"name": name, "path": source, "sourceReference": 0+0}
+		if IsObject(source)
+			breakpoint["source"] := source
+		else
+		{
+			SplitPath, source, name
+			breakpoint["source"] := {"name": name, "path": source, "sourceReference": 0+0}
+		}
 	}
 	if message
 		breakpoint["message"] := message
