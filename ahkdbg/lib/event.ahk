@@ -40,7 +40,10 @@ CreateBreakpoint(verified, id := "", line := "", column := "", source := "", mes
 	if column is number
 		breakpoint["column"] := column+0
 	if source
-		breakpoint["source"] := source
+	{
+		SplitPath, source, name
+		breakpoint["source"] := {"name": name, "path": source, "sourceReference": 0+0}
+	}
 	if message
 		breakpoint["message"] := message
 	return breakpoint
