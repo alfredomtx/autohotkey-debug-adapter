@@ -42,7 +42,9 @@ CreateBreakpoint(verified, id := "", line := "", column := "", source := "", mes
 	if source
 	{
 		if IsObject(source)
+		{
 			breakpoint["source"] := source
+		}
 		else
 		{
 			SplitPath, source, name
